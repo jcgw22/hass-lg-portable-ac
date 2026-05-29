@@ -116,12 +116,12 @@ class LGPortableACClimate(InfraredEmitterConsumerEntity, ClimateEntity):
         self._attr_swing_mode = SWING_OFF
         self._attr_preset_mode = PRESET_NONE
 
-        _LOGGER.debug("LGPortableACClimate initialized, emitter=%s", infrared_entity_id)
+        _LOGGER.warning("LGPortableACClimate initialized, emitter=%s", infrared_entity_id)
 
     async def async_added_to_hass(self) -> None:
         """Log availability after entity is added."""
         await super().async_added_to_hass()
-        _LOGGER.debug(
+        _LOGGER.warning(
             "Entity added to hass, available=%s, emitter=%s",
             self.available,
             self._infrared_emitter_entity_id,
@@ -134,7 +134,7 @@ class LGPortableACClimate(InfraredEmitterConsumerEntity, ClimateEntity):
         mode = _MODE_TO_PROTOCOL.get(self._attr_hvac_mode, "cool")
         fan = _FAN_TO_PROTOCOL.get(self._attr_fan_mode, "low")
 
-        _LOGGER.debug(
+        _LOGGER.warning(
             "Sending IR: emitter=%s mode=%s fan=%s temp=%s power_on=%s power_off=%s",
             self._infrared_emitter_entity_id,
             mode, fan,
@@ -152,19 +152,19 @@ class LGPortableACClimate(InfraredEmitterConsumerEntity, ClimateEntity):
             auto_clean=(self._attr_preset_mode == PRESET_AUTO_CLEAN),
         )
 
-        _LOGGER.debug("IR frame: %s", [f"0x{b:02X}" for b in frame])
+        _LOGGER.warning("IR frame: %s", [f"0x{b:02X}" for b in frame])
 
         command = LGPortableACCommand(frame)
         try:
             await self._send_command(command)
-            _LOGGER.debug("IR command sent successfully")
+            _LOGGER.warning("IR command sent successfully")
         except Exception:
             _LOGGER.exception("Failed to send IR command to %s", self._infrared_emitter_entity_id)
             raise
 
     async def async_set_hvac_mode(self, hvac_mode: HVACMode) -> None:
         """Set HVAC operation mode."""
-        _LOGGER.debug("async_set_hvac_mode called: %s (was %s)", hvac_mode, self._attr_hvac_mode)
+        _LOGGER.warning("async_set_hvac_mode called: %s (was %s)", hvac_mode, self._attr_hvac_mode)
         if hvac_mode == HVACMode.OFF:
             await self._send_state(power_off=True)
             self._attr_hvac_mode = HVACMode.OFF
