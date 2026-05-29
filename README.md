@@ -7,7 +7,7 @@
 </p>
 
 Control your **LG PL1215GXR** (and possibly other LG portable ACs) via
-infrared using Home Assistant's native IR platform (2026.4+).
+infrared using a Broadlink RM4 Pro and Home Assistant.
 
 ## Features
 
@@ -17,7 +17,7 @@ infrared using Home Assistant's native IR platform (2026.4+).
 - Fan speeds: Low, Medium, High
 - Swing (louver oscillation): On/Off
 - Auto-clean toggle
-- Works with any HA infrared emitter (ESPHome IR proxy, Broadlink, etc.)
+- State restored across HA restarts
 
 ## Why This Exists
 
@@ -32,21 +32,23 @@ See [docs/protocol.md](docs/protocol.md) for the full protocol specification.
 
 1. Install via HACS: Add this repo as a custom repository (category: Integration)
 2. Restart Home Assistant
-3. Go to Settings > Devices & Services > Add Integration > "LG Portable AC (IR)"
-4. Select your IR transmitter entity
-5. Done! A climate entity will appear.
+3. Go to **Settings → Devices & Services → Add Integration → "LG Portable AC (IR)"**
+4. Select your **Broadlink remote entity** (e.g. `remote.broadlink_rm4`)
+5. Done — a climate entity will appear
 
 ## Tested Hardware
 
-This integration has been developed and tested exclusively against the **LG PL1215GXR** portable air conditioner using a Broadlink RM4 Pro as the IR emitter. The protocol was reverse-engineered from captured IR frames on that specific unit.
+This integration has been developed and tested exclusively against the **LG PL1215GXR** portable air conditioner using a **Broadlink RM4 Pro** as the IR emitter. The protocol was reverse-engineered from captured IR frames on that specific unit.
 
 Other LG portable AC models may or may not use the same IR protocol. If you try it on a different model and it works (or doesn't), please open an issue.
 
 ## Requirements
 
-- Home Assistant 2026.4 or newer
-- An IR emitter registered on the infrared platform (ESPHome IR proxy recommended)
+- Home Assistant **2026.6** or newer
+- A **Broadlink RM4 Pro** (or compatible RM4) set up in HA with a working `remote.*` entity
 - IR emitter pointed at the AC unit
+
+> **Note:** This integration sends raw IR packets directly via the Broadlink `remote.send_command` service using `b64:` encoded codes. It does not use HA's infrared platform. This approach is used because the HA 2026.6 infrared platform has a tick-rate mismatch with the RM4 Pro that causes silent transmission failures; using the remote entity replays the packet in exactly the format the device expects.
 
 ## Status
 
@@ -54,4 +56,5 @@ Other LG portable AC models may or may not use the same IR protocol. If you try 
 - [x] Encoder/decoder with checksum verification
 - [x] Climate entity (cool, dry, fan, energy saver, temperature, swing, auto-clean)
 - [x] Power on / power off commands
+- [x] State restored across HA restarts
 - [ ] Timer support (bytes B2/B4/B5 -- captures needed)

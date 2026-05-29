@@ -5,7 +5,7 @@ from __future__ import annotations
 from enum import StrEnum
 
 DOMAIN = "lg_portable_ac"
-CONF_INFRARED_ENTITY_ID = "infrared_entity_id"
+CONF_REMOTE_ENTITY_ID = "remote_entity_id"
 
 
 class ACMode(StrEnum):

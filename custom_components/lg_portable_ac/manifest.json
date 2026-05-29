@@ -3,9 +3,10 @@
   "name": "LG Portable AC (IR)",
   "codeowners": ["@jcgw22"],
   "config_flow": true,
-  "dependencies": ["infrared"],
+  "dependencies": [],
   "documentation": "https://github.com/jcgw22/hass-lg-portable-ac",
   "integration_type": "device",
   "iot_class": "assumed_state",
+  "homeassistant": "2026.6.0",
   "version": "1.0.0"
 }

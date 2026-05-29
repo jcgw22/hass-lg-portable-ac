@@ -6,10 +6,7 @@ from typing import Any
 
 import voluptuous as vol
 
-from homeassistant.components.infrared import (
-    DOMAIN as INFRARED_DOMAIN,
-    async_get_emitters,
-)
+from homeassistant.components.remote import DOMAIN as REMOTE_DOMAIN
 from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
 from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.selector import (
@@ -17,7 +14,7 @@ from homeassistant.helpers.selector import (
     EntitySelectorConfig,
 )
 
-from .const import CONF_INFRARED_ENTITY_ID, DOMAIN
+from .const import CONF_REMOTE_ENTITY_ID, DOMAIN
 
 
 class LGPortableACConfigFlow(ConfigFlow, domain=DOMAIN):
@@ -29,16 +26,11 @@ class LGPortableACConfigFlow(ConfigFlow, domain=DOMAIN):
         self,
         user_input: dict[str, Any] | None = None,
     ) -> ConfigFlowResult:
-        """Handle the user step -- select an IR emitter."""
-        emitter_ids = async_get_emitters(self.hass)
-
-        if not emitter_ids:
-            return self.async_abort(reason="no_infrared_entities")
-
+        """Handle the user step -- select a Broadlink remote entity."""
         errors: dict[str, str] = {}
 
         if user_input is not None:
-            entity_id = user_input[CONF_INFRARED_ENTITY_ID]
+            entity_id = user_input[CONF_REMOTE_ENTITY_ID]
             await self.async_set_unique_id(f"lg_pac_{entity_id}")
             self._abort_if_unique_id_configured()
             ent_reg = er.async_get(self.hass)
@@ -57,11 +49,8 @@ class LGPortableACConfigFlow(ConfigFlow, domain=DOMAIN):
             step_id="user",
             data_schema=vol.Schema(
                 {
-                    vol.Required(CONF_INFRARED_ENTITY_ID): EntitySelector(
-                        EntitySelectorConfig(
-                            domain=INFRARED_DOMAIN,
-                            include_entities=emitter_ids,
-                        )
+                    vol.Required(CONF_REMOTE_ENTITY_ID): EntitySelector(
+                        EntitySelectorConfig(domain=REMOTE_DOMAIN)
                     ),
                 }
             ),

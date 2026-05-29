@@ -3,18 +3,17 @@
     "step": {
       "user": {
         "title": "Configurar LG Portable AC",
-        "description": "Seleccione el transmisor IR apuntado hacia su aire acondicionado portátil LG.",
+        "description": "Seleccione la entidad remota Broadlink apuntada hacia su aire acondicionado portátil LG.",
         "data": {
-          "infrared_entity_id": "Transmisor infrarrojo"
+          "remote_entity_id": "Control remoto Broadlink"
         },
         "data_description": {
-          "infrared_entity_id": "La entidad transmisora de infrarrojos que se usará para enviar comandos."
+          "remote_entity_id": "La entidad de control remoto Broadlink que se usará para enviar comandos IR."
         }
       }
     },
     "abort": {
-      "no_infrared_entities": "No se encontraron transmisores de infrarrojos. Configure primero un emisor IR (p. ej., ESPHome IR proxy).",
-      "already_configured": "Este emisor ya está configurado para un LG Portable AC."
+      "already_configured": "Este control remoto ya está configurado para un LG Portable AC."
     }
   }
 }

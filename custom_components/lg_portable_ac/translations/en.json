@@ -3,18 +3,17 @@
     "step": {
       "user": {
         "title": "Set up LG Portable AC",
-        "description": "Select the IR transmitter pointed at your LG portable air conditioner.",
+        "description": "Select the Broadlink remote entity pointed at your LG portable air conditioner.",
         "data": {
-          "infrared_entity_id": "Infrared transmitter"
+          "remote_entity_id": "Broadlink remote"
         },
         "data_description": {
-          "infrared_entity_id": "The infrared transmitter entity to use for sending commands."
+          "remote_entity_id": "The Broadlink remote entity to use for sending IR commands."
         }
       }
     },
     "abort": {
-      "no_infrared_entities": "No infrared transmitters found. Please set up an IR emitter (e.g., ESPHome IR proxy) first.",
-      "already_configured": "This emitter is already configured for an LG Portable AC."
+      "already_configured": "This remote is already configured for an LG Portable AC."
     }
   }
 }

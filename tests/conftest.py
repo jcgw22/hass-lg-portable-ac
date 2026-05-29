@@ -17,12 +17,12 @@ _HA_MODULES = [
     "homeassistant.components",
     "homeassistant.components.climate",
     "homeassistant.components.climate.const",
-    "homeassistant.components.infrared",
+    "homeassistant.components.remote",
     "homeassistant.helpers",
     "homeassistant.helpers.device_registry",
     "homeassistant.helpers.entity_platform",
+    "homeassistant.helpers.restore_state",
     "homeassistant.helpers.selector",
-    "infrared_protocols",
 ]
 
 for _mod in _HA_MODULES:

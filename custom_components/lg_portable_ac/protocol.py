@@ -10,6 +10,9 @@ Frame layout:
 from __future__ import annotations
 
 import base64 as _base64
+import logging
+
+_LOGGER = logging.getLogger(__name__)
 
 
 def _bit_reverse_byte(b: int) -> int:
@@ -62,6 +65,10 @@ def encode(
     Returns:
         List of 9 integers (0x00-0xFF).
     """
+    _LOGGER.debug(
+        "encode() called: temp_f=%s mode=%s fan=%s power_on=%s power_off=%s swing=%s clean=%s",
+        temp_f, mode, fan, power_on, power_off, auto_swing, auto_clean,
+    )
     temp_f = max(60, min(86, temp_f))
 
     # B0: Address byte (always 0xAA)
@@ -106,7 +113,13 @@ def encode(
     payload = [b0, b1, b2, b3, b4, b5, b6, b7]
     b8 = checksum(payload)
 
-    return [b0, b1, b2, b3, b4, b5, b6, b7, b8]
+    result = [b0, b1, b2, b3, b4, b5, b6, b7, b8]
+    _LOGGER.debug(
+        "encode() result: celsius=%s cidx=%s b1=0x%02X b3=0x%02X b6=0x%02X b7=0x%02X b8=0x%02X frame=%s",
+        celsius, cidx, b1, b3, b6, b7, b8,
+        [f"0x{b:02X}" for b in result],
+    )
+    return result
 
 
 def decode(frame: list[int]) -> dict:
