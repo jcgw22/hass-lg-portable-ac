@@ -1,10 +1,10 @@
 {
   "domain": "lg_portable_ac",
   "name": "LG Portable AC (IR)",
-  "codeowners": [],
+  "codeowners": ["@jcgw22"],
   "config_flow": true,
   "dependencies": ["infrared"],
-  "documentation": "https://github.com/OWNER/lg_portable_ac",
+  "documentation": "https://github.com/jcgw22/hass-lg-portable-ac",
   "integration_type": "device",
   "iot_class": "assumed_state",
   "version": "1.0.0"
