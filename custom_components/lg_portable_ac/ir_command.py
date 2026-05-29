@@ -34,9 +34,8 @@ class LGPortableACCommand(Command):
             frame: 9-byte list from protocol.encode().
             repeat_count: Number of times to repeat the frame (0 = send once).
         """
+        super().__init__(modulation=38000, repeat_count=repeat_count)
         self._frame = frame
-        self._repeat_count = repeat_count
-        self.modulation = 38000  # 38 kHz carrier frequency
 
     def _encode_frame(self) -> list[int]:
         """Convert one 9-byte frame to mark/space timing list.
@@ -66,19 +65,11 @@ class LGPortableACCommand(Command):
         return timings
 
     def get_raw_timings(self) -> list[int]:
-        """Return raw IR timings for transmission.
+        """Return raw IR timings for one frame transmission.
 
         Returns:
             List of ints: alternating mark (+) and space (-) durations
             in microseconds. Includes leader, 72 data bits, and trailer.
-            Repeated if repeat_count > 0.
+            The emitter handles repetition via self.repeat_count.
         """
-        timings = self._encode_frame()
-
-        # TODO: Determine the correct inter-frame gap if repeats are needed.
-        # Some IR protocols require a ~40ms gap between repeated frames.
-        for _ in range(self._repeat_count):
-            timings.append(-40000)  # 40ms gap (placeholder -- verify!)
-            timings.extend(self._encode_frame())
-
-        return timings
+        return self._encode_frame()
