@@ -1,0 +1,11 @@
+{
+  "domain": "lg_portable_ac",
+  "name": "LG Portable AC (IR)",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": ["infrared"],
+  "documentation": "https://github.com/OWNER/lg_portable_ac",
+  "integration_type": "device",
+  "iot_class": "assumed_state",
+  "version": "1.0.0"
+}
