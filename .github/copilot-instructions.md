@@ -97,7 +97,7 @@ B0=0xAA  B1=SWING|CIDX  B2=0x00  B3=FIDX  B4=0x00  B5=0x00  B6=MODE|FAN  B7=FLAG
 | File | Purpose |
 |------|---------|
 | `custom_components/lg_portable_ac/__init__.py` | Integration entry point, forwards to climate platform |
-| `custom_components/lg_portable_ac/manifest.json` | HA integration metadata (requires HA 2026.6+) |
+| `custom_components/lg_portable_ac/manifest.json` | HA integration metadata (requires HA 2026.4+) |
 | `custom_components/lg_portable_ac/const.py` | Domain name, config keys, enums for modes/fan speeds |
 | `custom_components/lg_portable_ac/protocol.py` | 9-byte frame encoder/decoder, checksum, bit-reversal |
 | `custom_components/lg_portable_ac/ir_command.py` | Converts bytes to signed µs mark/space timings |

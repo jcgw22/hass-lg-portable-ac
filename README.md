@@ -44,7 +44,7 @@ Other LG portable AC models may or may not use the same IR protocol. If you try 
 
 ## Requirements
 
-- Home Assistant **2026.6** or newer
+- Home Assistant **2026.4** or newer
 - A **Broadlink RM4 Pro** (or compatible RM4) set up in HA with a working `remote.*` entity
 - IR emitter pointed at the AC unit
 
