@@ -1,6 +1,6 @@
 {
   "domain": "lg_portable_ac",
-  "name": "LG Portable AC (IR)",
+  "name": "LG Portable AC RM4 Pro",
   "codeowners": ["@jcgw22"],
   "config_flow": true,
   "dependencies": [],

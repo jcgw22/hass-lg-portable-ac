@@ -1,4 +1,4 @@
-# LG Portable AC -- Home Assistant IR Integration
+# LG Portable AC RM4 Pro -- Home Assistant IR Integration
 
 [![HACS Custom](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz/)
 
@@ -32,7 +32,7 @@ See [docs/protocol.md](docs/protocol.md) for the full protocol specification.
 
 1. Install via HACS: Add this repo as a custom repository (category: Integration)
 2. Restart Home Assistant
-3. Go to **Settings → Devices & Services → Add Integration → "LG Portable AC (IR)"**
+3. Go to **Settings → Devices & Services → Add Integration → "LG Portable AC RM4 Pro"**
 4. Select your **Broadlink remote entity** (e.g. `remote.broadlink_rm4`)
 5. Done — a climate entity will appear
 

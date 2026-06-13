@@ -131,7 +131,7 @@ class LGPortableACClimate(RestoreEntity, ClimateEntity):
         self._attr_unique_id = f"{entry_id}_climate"
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, entry_id)},
-            name="LG Portable AC",
+            name="LG Portable AC RM4 Pro",
             manufacturer="LG",
             model="PL1215GXR",
         )

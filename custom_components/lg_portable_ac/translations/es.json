@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "Configurar LG Portable AC",
+        "title": "Configurar LG Portable AC RM4 Pro",
         "description": "Seleccione la entidad remota Broadlink apuntada hacia su aire acondicionado portátil LG.",
         "data": {
           "remote_entity_id": "Control remoto Broadlink"
@@ -13,7 +13,7 @@
       }
     },
     "abort": {
-      "already_configured": "Este control remoto ya está configurado para un LG Portable AC."
+      "already_configured": "Este control remoto ya está configurado para un LG Portable AC RM4 Pro."
     }
   }
 }

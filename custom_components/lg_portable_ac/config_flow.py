@@ -41,7 +41,7 @@ class LGPortableACConfigFlow(ConfigFlow, domain=DOMAIN):
                 else entity_id
             )
             return self.async_create_entry(
-                title=f"LG Portable AC ({entity_name})",
+                title=f"LG Portable AC RM4 Pro ({entity_name})",
                 data=user_input,
             )
 
